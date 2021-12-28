@@ -1,0 +1,58 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath('net.serenity-bdd:serenity-gradle-plugin:2.4.34')
+    }
+}
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id 'idea'
+    id 'project-report'
+}
+
+group 'com.sauce'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    // https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager
+    implementation 'io.github.bonigarcia:webdrivermanager:5.0.3'
+    implementation 'net.serenity-bdd:serenity-gradle-plugin:2.4.34'
+    // https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin
+    implementation 'org.apache.maven.plugins:maven-surefire-plugin:3.0.0-M5'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.1.1'
+    implementation 'net.serenity-bdd:serenity-core:3.1.15'
+    implementation 'net.serenity-bdd:serenity-junit:3.1.15'
+    implementation 'net.serenity-bdd:serenity-cucumber:3.1.15'
+    implementation 'junit:junit:4.13.2'
+
+
+    // https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-failsafe-plugin
+    testImplementation 'org.apache.maven.plugins:maven-failsafe-plugin:3.0.0-M5'
+    testImplementation 'net.serenity-bdd:serenity-core:3.1.15'
+    testImplementation 'net.serenity-bdd:serenity-junit:3.1.15'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.32'
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+}
+
+test {
+    useJUnit()
+    //useJUnitPlatform()
+}
+
+gradle.startParameter.continueOnFailure = true
